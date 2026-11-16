@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mediameta"
+version = "2.0.0"
+description = "Read and edit the metadata of photos, videos and audio from Python or the command line (v2.0G)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["exif", "metadata", "photo", "video", "audio", "mp4", "quicktime", "xmp", "id3", "flac", "gps"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+]
+dependencies = [
+    "piexif>=1.1.3",
+    "pillow>=9.1",
+    "mutagen>=1.45",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "mutagen>=1.45",
+]
+
+[project.scripts]
+mediameta = "mediameta.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mediameta*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
